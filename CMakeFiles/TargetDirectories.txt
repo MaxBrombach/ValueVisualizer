@@ -1,0 +1,3 @@
+/home/maxbr/Analyser/ValueVisualizer/CMakeFiles/Analyser.dir
+/home/maxbr/Analyser/ValueVisualizer/CMakeFiles/edit_cache.dir
+/home/maxbr/Analyser/ValueVisualizer/CMakeFiles/rebuild_cache.dir
