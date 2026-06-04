@@ -276,4 +276,11 @@ CMakeFiles/Analyser.dir/src/Tasks.cpp.o: \
  /usr/include/c++/11/optional /usr/include/c++/11/numeric \
  /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h /usr/include/c++/11/any \
- /home/maxbr/Analyser/ValueVisualizer/include/Datatypes.hpp
+ /home/maxbr/Analyser/ValueVisualizer/include/Datatypes.hpp \
+ /home/maxbr/Analyser/ValueVisualizer/include/Queue.hpp \
+ /usr/include/c++/11/condition_variable \
+ /usr/include/c++/11/bits/std_mutex.h \
+ /usr/include/c++/11/bits/unique_lock.h /usr/include/c++/11/queue \
+ /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
+ /usr/include/c++/11/bits/deque.tcc /usr/include/c++/11/bits/stl_queue.h \
+ /home/maxbr/Analyser/ValueVisualizer/include/Queue.tpp

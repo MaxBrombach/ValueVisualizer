@@ -339,7 +339,17 @@ CMakeFiles/Analyser.dir/src/Tasks.cpp.o: ../src/Tasks.cpp \
   /usr/include/c++/11/bits/stl_numeric.h \
   /usr/include/c++/11/pstl/glue_numeric_defs.h \
   /usr/include/c++/11/any \
-  ../include/Datatypes.hpp
+  ../include/Datatypes.hpp \
+  ../include/Queue.hpp \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/bits/std_mutex.h \
+  /usr/include/c++/11/bits/unique_lock.h \
+  /usr/include/c++/11/queue \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_queue.h \
+  ../include/Queue.tpp
 
 CMakeFiles/Analyser.dir/src/Threads.cpp.o: ../src/Threads.cpp \
   /usr/include/stdc-predef.h \
@@ -1291,13 +1301,13 @@ CMakeFiles/Analyser.dir/src/main.cpp.o: ../src/main.cpp \
 
 ../src/main.cpp:
 
+../include/Threads.hpp:
+
 /usr/include/c++/11/bits/deque.tcc:
 
 /usr/include/linux/stat.h:
 
 /usr/include/c++/11/deque:
-
-../include/Threads.hpp:
 
 ../include/Datatypes.hpp:
 
@@ -1355,9 +1365,9 @@ CMakeFiles/Analyser.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/c++/11/ctime:
 
-/usr/include/c++/11/condition_variable:
-
 /usr/include/c++/11/thread:
+
+/usr/include/c++/11/condition_variable:
 
 /usr/include/c++/11/ratio:
 
