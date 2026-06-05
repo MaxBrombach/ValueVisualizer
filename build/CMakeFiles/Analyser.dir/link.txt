@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/Analyser.dir/src/main.cpp.o CMakeFiles/Analyser.dir/src/Tasks.cpp.o CMakeFiles/Analyser.dir/src/Threads.cpp.o -o Analyser  /usr/lib/x86_64-linux-gnu/libcurl.so 
+/usr/bin/c++ -g CMakeFiles/Analyser.dir/src/main.cpp.o CMakeFiles/Analyser.dir/src/Tasks.cpp.o CMakeFiles/Analyser.dir/src/Threads.cpp.o -o Analyser  /usr/lib/x86_64-linux-gnu/libcurl.so 

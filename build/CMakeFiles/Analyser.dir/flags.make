@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/maxbr/Analyser/ValueVisualizer/include -I/home/maxbr/Analyser/ValueVisualizer/Extern_Libs
 
-CXX_FLAGS = 
+CXX_FLAGS = -g -std=gnu++20
 
