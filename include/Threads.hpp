@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <vector>
 #include <thread>
+#include <functional>
 
 #include "Tasks.hpp"
 #include "Datatypes.hpp"
@@ -22,7 +23,8 @@ private:
     int m_iComputingThreads; 
     int m_iApiThreads;
 private:
-    void threadFunction();
+    void apiThreadfunction();
+    void computationFunction();
 public:
     Threads(Threadqueue<IncomingData>& qIncoming, Threadqueue<StockData>& qOutcoming, int iThreads, int iApiThreads);
     ~Threads();
@@ -30,8 +32,7 @@ public:
     void startApiThreads();
     void startComputationThreads();
 
-    void apiThreadfunction();
-    void computingfunction();
+   
 };
 
 

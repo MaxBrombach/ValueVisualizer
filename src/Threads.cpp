@@ -37,7 +37,7 @@ void Threads::startComputationThreads()
 {
     for(int i = 0; i < m_iComputingThreads; ++i)
     {
-        m_vtConsumerThreads.emplace_back([this](){computingfunction();});
+        m_vtConsumerThreads.emplace_back([this](){computationFunction();});
     }
 }
 
@@ -53,21 +53,30 @@ void Threads::apiThreadfunction()
 
         ComputingData sComputingData;
         sComputingData.strStockticker = result["meta"]["symbol"];
-        for (int i = 0; i < timestamps.size(); ++i)
-        {
-            sComputingData.fStockprice = closes[i];
-            sComputingData.lTimestamp = timestamps[i];  
-        }
-        m_qComputing.push(sComputingData);       
+       
+        sComputingData.vfStockprice = closes.get<std::vector<float>>();
+        sComputingData.vlTimestamps = timestamps.get<std::vector<long>>();  
+        
+        sComputingData.eCompTask = ComputingTask::UpperTrendline;
+        m_qComputing.push(sComputingData);  
+        sComputingData.eCompTask = ComputingTask::LowerTrendline;
+        m_qComputing.push(sComputingData);  
+       
     }
     
 }
 
-void Threads::computingfunction()
+void Threads::computationFunction()
 {
     while (true)
     {
-        ComputingData sComputingData= m_qComputing.pop();
-        // TODO 
+        ComputingData compData = m_qComputing.pop();
+        StockData stockData;
+        if (compData.eCompTask == ComputingTask::UpperTrendline)
+            stockData= m_Tasks.computeUpperTrendline(compData);
+        else if (compData.eCompTask == ComputingTask::LowerTrendline)
+            stockData = m_Tasks.computeLowerTrendline(compData);
+        
+        m_qOutcoming.push(stockData);
     }
 }
