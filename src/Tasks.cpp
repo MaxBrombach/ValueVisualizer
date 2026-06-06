@@ -53,30 +53,77 @@ StockData Tasks::computeUpperTrendline(const ComputingData &sComputingData)
 
 StockData Tasks::computeLowerTrendline(const ComputingData &sComputingData)
 {
-    return StockData();
+    int iWindowssize = 3;
+    bool bRideUp = false;
+    std::vector<Stockpricetuple> vLowerTrendlineLows;
+
+    StockPrice fLow = sComputingData.vfStockprice[0];
+    for (int i = 0; i < sComputingData.vlTimestamps.size(); ++i)
+    {            
+        StockPrice fSPrice = sComputingData.vfStockprice[i];
+        if (!bRideUp)
+        {
+            if (fSPrice < fLow)                   
+                fLow = fSPrice;         
+            else 
+            {
+                if(isLow(fLow, sComputingData.vfStockprice, iWindowssize, i))
+                {
+                    vLowerTrendlineLows.push_back({sComputingData.vlTimestamps.at(i), fLow});
+                    fLow = sComputingData.vfStockprice[i];  
+                    bRideUp = true;                                 
+                }                
+            }
+        }
+        else
+        {
+            if (fSPrice < fLow) 
+            {
+                bRideUp = false;
+                fLow = fSPrice;
+            }                 
+        }        
+    }
+
+    std::vector<Trendline> vTrendlines = computeTrendlines(vLowerTrendlineLows);
+    StockData stockData;
+    stockData.strStockticker = std::move(sComputingData.strStockticker);
+    stockData.vTimeStamp     = std::move(sComputingData.vlTimestamps);
+    stockData.vStockvalue    = std::move(sComputingData.vfStockprice);
+    stockData.vTrendlines    = std::move(vTrendlines);
+    return stockData;
 }
 
 bool Tasks::isHigh(StockPrice fHigh, const std::vector<StockPrice>& vfStockPrices, int iWindowsize, int iIndex)
 {
-    bool bHigh = true; 
-    StockPrice fStockprice = fHigh;  
-    StockPrice fStockpriceNext = 0;
+    bool bHigh = true;  
+    StockPrice fStockprice = 0;
     for(int i = iIndex; i < iIndex + iWindowsize - 1; ++i)
     {     
-        fStockpriceNext = vfStockPrices[iIndex + 1];   
-        if(fStockprice <= fStockpriceNext)
+        fStockprice = vfStockPrices[i + 1];   
+        if(fHigh <= fStockprice)
         {
             bHigh = false;
             break;            
-        }
-        fStockprice = fStockpriceNext;                      
+        }                     
     }      
     return bHigh;       
 }
 
-bool Tasks::isLow(StockPrice fStockPrice, std::vector<StockPrice> &vfStockPrices)
+bool Tasks::isLow(StockPrice fLow, const std::vector<StockPrice>& vfStockPrices, int iWindowsize, int iIndex)
 {
-    return false;
+    bool bLow = true;  
+    StockPrice fStockprice = 0;
+    for(int i = iIndex; i < iIndex + iWindowsize - 1; ++i)
+    {     
+        fStockprice = vfStockPrices[i + 1];   
+        if(fLow >= fStockprice)
+        {
+            bLow = false;
+            break;            
+        }                     
+    }      
+    return bLow; 
 }
 
 std::vector<Trendline> Tasks::computeTrendlines(const std::vector<Stockpricetuple> &vStockpricepoints)

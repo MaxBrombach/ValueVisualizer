@@ -77,6 +77,17 @@ void Threads::computationFunction()
         else if (compData.eCompTask == ComputingTask::LowerTrendline)
             stockData = m_Tasks.computeLowerTrendline(compData);
         
-        m_qOutcoming.push(stockData);
+        if (m_mapJobMap.contains(stockData.strStockticker))
+        {
+            std::vector<Trendline> storedTrendline = m_mapJobMap.getTrendline(stockData.strStockticker);
+            stockData.vTrendlines.insert(stockData.vTrendlines.end(), storedTrendline.begin(), storedTrendline.end());
+            m_mapJobMap.clearEntry(stockData.strStockticker);
+            m_qOutcoming.push(stockData);            
+        }
+        else
+        {
+            m_mapJobMap.insertTrendline(stockData.strStockticker, stockData.vTrendlines);
+        }
+            
     }
 }

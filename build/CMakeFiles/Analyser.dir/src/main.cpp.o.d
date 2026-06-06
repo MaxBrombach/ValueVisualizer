@@ -387,4 +387,6 @@ CMakeFiles/Analyser.dir/src/main.cpp.o: \
  /home/maxbr/Analyser/ValueVisualizer/include/Datatypes.hpp \
  /home/maxbr/Analyser/ValueVisualizer/include/Queue.hpp \
  /usr/include/c++/11/queue /usr/include/c++/11/bits/stl_queue.h \
- /home/maxbr/Analyser/ValueVisualizer/include/Queue.tpp
+ /home/maxbr/Analyser/ValueVisualizer/include/Queue.tpp \
+ /home/maxbr/Analyser/ValueVisualizer/include/Jobmap.hpp \
+ /usr/include/c++/11/shared_mutex

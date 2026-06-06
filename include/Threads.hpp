@@ -6,6 +6,7 @@
 
 #include "Tasks.hpp"
 #include "Datatypes.hpp"
+#include "Jobmap.hpp"
 #include "Queue.hpp"
 
 
@@ -18,6 +19,7 @@ private:
     Threadqueue<IncomingData>& m_qIncoming;
     Threadqueue<StockData>& m_qOutcoming;
     Threadqueue<ComputingData> m_qComputing;
+    JobMap m_mapJobMap;
     std::vector<std::thread> m_vtConsumerThreads;
     std::vector<std::thread> m_vtApiThreads;
     int m_iComputingThreads; 

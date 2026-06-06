@@ -18,7 +18,7 @@ public:
 StockData computeUpperTrendline(const ComputingData& sComputingData);
 StockData computeLowerTrendline(const ComputingData& sComputingData);
 bool isHigh(StockPrice fHigh, const std::vector<StockPrice>& vfStockPrices, int iWindowsize, int iIndex);
-bool isLow(StockPrice fStockPrice, std::vector<StockPrice>& vfStockPrices);
+bool isLow(StockPrice fLow, const std::vector<StockPrice>& vfStockPrices, int iWindowsize, int iIndex);
 std::vector<Trendline> computeTrendlines(const std::vector<Stockpricetuple>& vStockpricepoints);
 nlohmann::json fetchStock(IncomingData sIncomingData);
 
