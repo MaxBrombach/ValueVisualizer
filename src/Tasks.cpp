@@ -10,7 +10,6 @@ size_t Tasks::WriteCallback(void* contents, size_t size, size_t nmemb, std::stri
 
 StockData Tasks::computeUpperTrendline(const ComputingData &sComputingData)
 {
-    int iWindowssize = 3;
     bool bRideDown = false;
     std::vector<Stockpricetuple> vUpperTrendlineHighs;
 
@@ -24,7 +23,7 @@ StockData Tasks::computeUpperTrendline(const ComputingData &sComputingData)
                 fHigh = fSPrice;         
             else 
             {
-                if(isHigh(fHigh, sComputingData.vfStockprice, iWindowssize, i))
+                if(isHigh(fHigh, sComputingData.vfStockprice, sComputingData.iWindowsize, i))
                 {
                     vUpperTrendlineHighs.push_back({sComputingData.vlTimestamps.at(i), fHigh});
                     fHigh = sComputingData.vfStockprice[i];  
@@ -53,7 +52,7 @@ StockData Tasks::computeUpperTrendline(const ComputingData &sComputingData)
 
 StockData Tasks::computeLowerTrendline(const ComputingData &sComputingData)
 {
-    int iWindowssize = 3;
+    
     bool bRideUp = false;
     std::vector<Stockpricetuple> vLowerTrendlineLows;
 
@@ -67,7 +66,7 @@ StockData Tasks::computeLowerTrendline(const ComputingData &sComputingData)
                 fLow = fSPrice;         
             else 
             {
-                if(isLow(fLow, sComputingData.vfStockprice, iWindowssize, i))
+                if(isLow(fLow, sComputingData.vfStockprice, sComputingData.iWindowsize, i))
                 {
                     vLowerTrendlineLows.push_back({sComputingData.vlTimestamps.at(i), fLow});
                     fLow = sComputingData.vfStockprice[i];  

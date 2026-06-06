@@ -6,6 +6,7 @@ TEST(TrendlineTest, DetectsUpperTrendlineHighs)
     Tasks tasks;
 
     ComputingData data;
+    data.iWindowsize = 2;
     data.strStockticker = "TEST";
     data.vlTimestamps = {1,2,3,4,5,6,7,8,9};
     data.vfStockprice = {10, 12, 15, 13, 14, 13, 18, 16, 14};

@@ -33,6 +33,7 @@ struct ComputingData
     std::string strStockticker;
     std::vector<Timestamp> vlTimestamps;
     std::vector<StockPrice> vfStockprice;
+    int iWindowsize;
     ComputingTask eCompTask;
 
 };
@@ -42,4 +43,5 @@ struct IncomingData
     std::string strGranularity;
     std::string strRange;
     std::string strStockticker;
+    int iWindowsize;
 };

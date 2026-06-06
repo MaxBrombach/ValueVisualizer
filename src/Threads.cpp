@@ -58,6 +58,7 @@ void Threads::apiThreadfunction()
         sComputingData.vlTimestamps = timestamps.get<std::vector<long>>();  
         
         sComputingData.eCompTask = ComputingTask::UpperTrendline;
+        sComputingData.iWindowsize = sIncomingData.iWindowsize;
         m_qComputing.push(sComputingData);  
         sComputingData.eCompTask = ComputingTask::LowerTrendline;
         m_qComputing.push(sComputingData);  

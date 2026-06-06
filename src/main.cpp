@@ -57,6 +57,7 @@ int main(int argc, char const *argv[])
         sIncomingData.strStockticker = json["Ticker"];
         sIncomingData.strGranularity  = json["Granularity"];
         sIncomingData.strRange = json["Range"]; 
+        sIncomingData.iWindowsize = json["Windowsize"];
         qIncoming.push(sIncomingData);  
         res.set_content("OK", "text/plain");
     });
